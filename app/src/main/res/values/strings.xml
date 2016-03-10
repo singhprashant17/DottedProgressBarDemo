@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CustomProgressBar</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_active">#aa552f</string>
+    <string name="action_inactive">Settings</string>
+</resources>
