@@ -23,3 +23,7 @@ All these customizations are available through Java code as well
 
 <b>Features loved to be added</b>
 1. Animation support when switching between dots
+<br /><br />
+<b>Screenshots</b><b/>
+![Alt text](/screenshots/img1.png?raw=true)<br /><br />
+![Alt text](/screenshots/img2.png?raw=true "Exception View")<br />
