@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <com.example.webonise.customprogressbar.DottedProgressBar
+    <com.prashant.android.dottedprogressbar.DottedProgressBar
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,6 +20,5 @@
         app:activeDot="@color/primary_color"
         app:dotSize="20dp"
         app:inactiveDot="@color/primary_text_color"
-        app:jumpingSpeed="670"
         app:noOfDots="5"/>
 </LinearLayout>

@@ -1,8 +1,10 @@
 package com.example.webonise.customprogressbar;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 
+import com.prashant.android.dottedprogressbar.DottedProgressBar;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -11,8 +13,19 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DottedProgressBar progressBar = (DottedProgressBar) findViewById(R.id.progress);
+        final DottedProgressBar progressBar = (DottedProgressBar) findViewById(R.id.progress);
         progressBar.setNumberOfDots(5);
-        progressBar.setLevel(4);
+
+        Handler handler = new Handler();
+
+        for (int i = 0; i <= 5; i++) {
+            final int finalI = i;
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressBar.setLevel(finalI);
+                }
+            }, 1000 * i);
+        }
     }
 }

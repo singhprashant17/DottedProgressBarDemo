@@ -1,4 +1,4 @@
-package com.example.webonise.customprogressbar;
+package com.prashant.android.dottedprogressbar;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,6 @@ import android.view.View;
 
 public class DottedProgressBar extends View {
     private final float dotSize;
-    private final int jumpingSpeed;
     private final DisplayMetrics displaymetrics;
     private int emptyDotsColor;
     private int activeDotColor;
@@ -26,9 +25,7 @@ public class DottedProgressBar extends View {
 
         displaymetrics = new DisplayMetrics();
         TypedArray a = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.DottedProgressBar,
-                0, 0);
+                attrs, R.styleable.DottedProgressBar, 0, 0);
 
         try {
             emptyDotsColor = a.getColor(R.styleable.DottedProgressBar_emptyDotsColor, Color.WHITE);
@@ -37,13 +34,15 @@ public class DottedProgressBar extends View {
             TypedValue value = new TypedValue();
 
             a.getValue(R.styleable.DottedProgressBar_activeDot, value);
-            if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+            if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue
+                    .TYPE_LAST_COLOR_INT) {
                 // It's a color
                 activeDotColor = getResources().getColor(value.resourceId);
             }
 
             a.getValue(R.styleable.DottedProgressBar_inactiveDot, value);
-            if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+            if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue
+                    .TYPE_LAST_COLOR_INT) {
                 // It's a color
                 emptyDotsColor = getResources().getColor(value.resourceId);
             }
@@ -51,8 +50,6 @@ public class DottedProgressBar extends View {
             dotSize = a.getDimensionPixelSize(R.styleable.DottedProgressBar_dotSize, 5);
 
             numberOfDots = a.getInteger(R.styleable.DottedProgressBar_noOfDots, 7);
-
-            jumpingSpeed = a.getInt(R.styleable.DottedProgressBar_jumpingSpeed, 500);
 
             mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             mPaint.setStyle(Paint.Style.FILL);
@@ -64,10 +61,6 @@ public class DottedProgressBar extends View {
 
     public float getDotSize() {
         return dotSize;
-    }
-
-    public int getJumpingSpeed() {
-        return jumpingSpeed;
     }
 
     public int getEmptyDotsColor() {
@@ -97,8 +90,8 @@ public class DottedProgressBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int startPoint = (int) (dotSize / 2) + getPaddingLeft();
-        int endPoint = (int) (getWidth() - (dotSize / 2) - getPaddingRight());
+        int startPoint = (int) (dotSize / 2);
+        int endPoint = (int) (getWidth() - (dotSize / 2));
         int spaceBetweenPoints = (endPoint - startPoint) / (numberOfDots - 1);
 
         int counter = startPoint;
@@ -122,7 +115,8 @@ public class DottedProgressBar extends View {
         /**
          * Draw highlighted line
          */
-        canvas.drawLine(startPoint, getHeight() / 2, counter - spaceBetweenPoints, getHeight() / 2, mPaint);
+        canvas.drawLine(startPoint, getHeight() / 2, counter - spaceBetweenPoints, getHeight() /
+                2, mPaint);
 
         /**
          * Draw inactive dots

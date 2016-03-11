@@ -6,7 +6,6 @@
         <attr name="inactiveDot" format="reference|color"/>
         <attr name="activeDot" format="reference|color"/>
         <attr name="dotSize" format="dimension"/>
-        <attr name="jumpingSpeed" format="integer"/>
         <attr name="noOfDots" format="integer"/>
     </declare-styleable>
 </resources>
