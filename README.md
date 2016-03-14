@@ -11,12 +11,11 @@ The demo project has implementation with this DottedProgressBar.
 <br />
 <b>NOTEABLE ATTRIBUTES : </b>
 
-    <attr name="emptyDotsColor" format="color" />
-    <attr name="activeDotColor" format="color"/>
-    <attr name="inactiveDot" format="reference|color"/>
-    <attr name="activeDot" format="reference|color"/>
+    <attr name="emptyDotsColor" format="reference|color"/>
+    <attr name="activeDotColor" format="reference|color"/>
     <attr name="dotSize" format="dimension"/>
     <attr name="noOfDots" format="integer"/>
+    <attr name="level" format="integer"/>
 
 All these customizations are available through Java code as well
 
