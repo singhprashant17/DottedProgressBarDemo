@@ -33,14 +33,12 @@ public class DottedProgressBar extends View {
 
             TypedValue value = new TypedValue();
 
-            a.getValue(R.styleable.DottedProgressBar_activeDot, value);
             if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue
                     .TYPE_LAST_COLOR_INT) {
                 // It's a color
                 activeDotColor = getResources().getColor(value.resourceId);
             }
 
-            a.getValue(R.styleable.DottedProgressBar_inactiveDot, value);
             if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue
                     .TYPE_LAST_COLOR_INT) {
                 // It's a color
@@ -50,6 +48,8 @@ public class DottedProgressBar extends View {
             dotSize = a.getDimensionPixelSize(R.styleable.DottedProgressBar_dotSize, 5);
 
             numberOfDots = a.getInteger(R.styleable.DottedProgressBar_noOfDots, 7);
+
+            levels = a.getInteger(R.styleable.DottedProgressBar_level, 0);
 
             mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             mPaint.setStyle(Paint.Style.FILL);

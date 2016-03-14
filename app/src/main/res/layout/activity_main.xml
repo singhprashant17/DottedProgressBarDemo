@@ -17,8 +17,8 @@
         android:layout_gravity="center"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        app:activeDot="@color/primary_color"
+        app:activeDotColor="@color/primary_color"
         app:dotSize="20dp"
-        app:inactiveDot="@color/primary_text_color"
+        app:emptyDotsColor="@color/primary_text_color"
         app:noOfDots="5"/>
 </LinearLayout>
