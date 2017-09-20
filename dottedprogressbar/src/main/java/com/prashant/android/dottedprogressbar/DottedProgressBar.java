@@ -11,6 +11,9 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 
+/**
+ * @author Prashant Singh
+ */
 public class DottedProgressBar extends View {
     private final float dotSize;
     private final DisplayMetrics displaymetrics;

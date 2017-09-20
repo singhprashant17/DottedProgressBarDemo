@@ -4,11 +4,11 @@ An example implementation of customized Horizontal Progress Bar (DottedProgressB
 
 This library has a custom view which acts as a progress bar with dots as demarcation as the progress levels.
 
-<br />
-Easy to use and highly customizable.<br />
+Easy to use and highly customizable.
+
 The demo project has implementation with this DottedProgressBar.
 
-<br />
+
 <b>NOTEABLE ATTRIBUTES : </b>
 
     <attr name="emptyDotsColor" format="reference|color"/>
@@ -21,9 +21,12 @@ The demo project has implementation with this DottedProgressBar.
 All these customizations are available through Java code as well
 
 
+<b>Screenshots</b>
+
+![Alt text](/screenshots/img1.png?raw=true)
+
+![Alt text](/screenshots/img2.png?raw=true "Exception View")
+
 <b>Features loved to be added</b>
 1. Animation support when switching between dots
-<br /><br />
-<b>Screenshots</b><br/>
-![Alt text](/screenshots/img1.png?raw=true)<br /><br />
-![Alt text](/screenshots/img2.png?raw=true "Exception View")<br />
+
