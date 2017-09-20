@@ -20,5 +20,5 @@
         app:activeDotColor="@color/primary_color"
         app:dotSize="20dp"
         app:emptyDotsColor="@color/primary_text_color"
-        app:noOfDots="5"/>
+        app:maxProgress="5"/>
 </LinearLayout>

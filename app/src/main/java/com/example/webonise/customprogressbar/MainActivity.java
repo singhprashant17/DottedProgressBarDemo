@@ -14,7 +14,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         final DottedProgressBar progressBar = (DottedProgressBar) findViewById(R.id.progress);
-        progressBar.setNumberOfDots(5);
+        progressBar.setMaxProgress(5);
 
         Handler handler = new Handler();
 
@@ -23,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    progressBar.setLevel(finalI);
+                    progressBar.setProgress(finalI);
                 }
             }, 1000 * i);
         }
