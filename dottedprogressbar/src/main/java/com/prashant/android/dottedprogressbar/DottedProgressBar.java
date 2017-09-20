@@ -14,11 +14,12 @@ import android.view.View;
 public class DottedProgressBar extends View {
     private final float dotSize;
     private final DisplayMetrics displaymetrics;
+    private final Paint mPaint;
     private int emptyDotsColor;
     private int activeDotColor;
-    private int numberOfDots;
-    private Paint mPaint;
-    private int levels;
+    private int maxProgress;
+    private int progress;
+    private int strokeWidth;
 
     public DottedProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -47,9 +48,11 @@ public class DottedProgressBar extends View {
 
             dotSize = a.getDimensionPixelSize(R.styleable.DottedProgressBar_dotSize, 5);
 
-            numberOfDots = a.getInteger(R.styleable.DottedProgressBar_noOfDots, 7);
+            maxProgress = a.getInteger(R.styleable.DottedProgressBar_maxProgress, 7);
 
-            levels = a.getInteger(R.styleable.DottedProgressBar_level, 0);
+            progress = a.getInteger(R.styleable.DottedProgressBar_progress, 0);
+
+            strokeWidth = a.getInteger(R.styleable.DottedProgressBar_strokeWidth, 10);
 
             mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             mPaint.setStyle(Paint.Style.FILL);
@@ -79,12 +82,39 @@ public class DottedProgressBar extends View {
         this.activeDotColor = activeDotColor;
     }
 
-    public int getNumberOfDots() {
-        return numberOfDots;
+    public int getMaxProgress() {
+        return maxProgress;
     }
 
-    public void setNumberOfDots(int numberOfDots) {
-        this.numberOfDots = numberOfDots;
+    public void setMaxProgress(int maxProgress) {
+        this.maxProgress = maxProgress;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        if (progress <= maxProgress) {
+            this.progress = progress;
+        }
+        invalidate();
+    }
+
+    public int getStrokeWidth() {
+        return strokeWidth;
+    }
+
+    public void setStrokeWidth(int strokeWidth) {
+        this.strokeWidth = strokeWidth;
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int calculatedHeight = getPaddingTop() + getPaddingBottom() + (int) dotSize;
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int width = displaymetrics.widthPixels;
+        setMeasuredDimension(width - getPaddingLeft() - getPaddingRight(), calculatedHeight);
     }
 
     @Override
@@ -92,14 +122,14 @@ public class DottedProgressBar extends View {
         super.onDraw(canvas);
         int startPoint = (int) (dotSize / 2);
         int endPoint = (int) (getWidth() - (dotSize / 2));
-        int spaceBetweenPoints = (endPoint - startPoint) / (numberOfDots - 1);
+        int spaceBetweenPoints = (endPoint - startPoint) / (maxProgress - 1);
 
         int counter = startPoint;
 
         /**
          * Draw a white line from start to end
          */
-        mPaint.setStrokeWidth(20);
+        mPaint.setStrokeWidth(strokeWidth);
         mPaint.setColor(emptyDotsColor);
         canvas.drawLine(startPoint, getHeight() / 2, endPoint, getHeight() / 2, mPaint);
 
@@ -107,7 +137,7 @@ public class DottedProgressBar extends View {
         /**
          * Draw as much number of highlighted dots
          */
-        for (int i = 0; i < levels; i++, counter += spaceBetweenPoints) {
+        for (int i = 0; i < progress; i++, counter += spaceBetweenPoints) {
             mPaint.setColor(activeDotColor);
             canvas.drawCircle(counter, getPaddingTop() + dotSize / 2, dotSize / 2, mPaint);
         }
@@ -121,24 +151,9 @@ public class DottedProgressBar extends View {
         /**
          * Draw inactive dots
          */
-        for (int i = levels; i < numberOfDots; i++, counter += spaceBetweenPoints) {
+        for (int i = progress; i < maxProgress; i++, counter += spaceBetweenPoints) {
             mPaint.setColor(emptyDotsColor);
             canvas.drawCircle(counter, getPaddingTop() + dotSize / 2, dotSize / 2, mPaint);
         }
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int calculatedHeight = getPaddingTop() + getPaddingBottom() + (int) dotSize;
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        int width = displaymetrics.widthPixels;
-        setMeasuredDimension(width - getPaddingLeft() - getPaddingRight(), calculatedHeight);
-    }
-
-    public void setLevel(int levels) {
-        if (levels <= numberOfDots) {
-            this.levels = levels;
-        }
-        invalidate();
     }
 }
