@@ -14,8 +14,9 @@ The demo project has implementation with this DottedProgressBar.
     <attr name="emptyDotsColor" format="reference|color"/>
     <attr name="activeDotColor" format="reference|color"/>
     <attr name="dotSize" format="dimension"/>
-    <attr name="noOfDots" format="integer"/>
-    <attr name="level" format="integer"/>
+    <attr name="maxProgress" format="integer"/>
+    <attr name="progress" format="integer"/>
+    <attr name="strokeWidth" format="integer"/>
 
 All these customizations are available through Java code as well
 
