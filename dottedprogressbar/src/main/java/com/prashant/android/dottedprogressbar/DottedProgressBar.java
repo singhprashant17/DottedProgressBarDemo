@@ -75,6 +75,7 @@ public class DottedProgressBar extends View {
 
     public void setEmptyDotsColor(int emptyDotsColor) {
         this.emptyDotsColor = emptyDotsColor;
+        invalidate();
     }
 
     public int getActiveDotColor() {
@@ -83,6 +84,7 @@ public class DottedProgressBar extends View {
 
     public void setActiveDotColor(int activeDotColor) {
         this.activeDotColor = activeDotColor;
+        invalidate();
     }
 
     public int getMaxProgress() {
@@ -91,6 +93,7 @@ public class DottedProgressBar extends View {
 
     public void setMaxProgress(int maxProgress) {
         this.maxProgress = maxProgress;
+        invalidate();
     }
 
     public int getProgress() {
@@ -110,6 +113,7 @@ public class DottedProgressBar extends View {
 
     public void setStrokeWidth(int strokeWidth) {
         this.strokeWidth = strokeWidth;
+        invalidate();
     }
 
     @Override
