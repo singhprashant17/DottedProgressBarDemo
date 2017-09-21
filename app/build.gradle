@@ -22,5 +22,5 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.0.0'
-    compile project(':dottedprogressbar')
+    compile 'com.prashant.android:dottedprogressbar:1.0.1'
 }
